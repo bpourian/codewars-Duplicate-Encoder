@@ -1,17 +1,3 @@
-Completed this challenge a week into Ruby.
+Aim of this repo is to upload solutoins to challenges completed on codewars.com. 
+I will also be inclduing the highest voted alternative as a comparison and to learn from.
 
-The goal of this exercise is to convert a string to a new string 
-where each character in the new string is '(' if that character appears 
-only once in the original string, or ')' if that character appears more 
-than once in the original string. Ignore capitalization when determining 
-if a character is a duplicate.
-
-Examples:
-
-"din" => "((("
-
-"recede" => "()()()"
-
-"Success" => ")())())"
-
-"(( @" => "))(("
