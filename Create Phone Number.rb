@@ -25,7 +25,6 @@ def createPhoneNumber(numbers)
 		   .insert(4,")")
 		   .insert(5," ")
 		   .insert(9,"-")
-		   .join
 end
 
 
