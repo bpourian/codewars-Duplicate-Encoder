@@ -10,6 +10,7 @@
 #return an empty string.
 
 def number_to_english(n)
+
   numbers_to_name = {
       1000 => "thousand",
       100 => "hundred",
@@ -39,22 +40,36 @@ def number_to_english(n)
       4 => "four",
       3 => "three",
       2 => "two",
-      1 => "one"
+      1 => "one",
+      0 => "zero"
     }
+
+
   str = ""
   numbers_to_name.each do |num, name|
-    if n == 0 || n > 99999
+
+    if n == 0
       return str
+
+    elsif n > 99999
+      return str
+
     elsif n.to_s.length == 1 && n/num > 0
-      return str + "#{name}"
+      return "#{name}"
+
     elsif n < 100 && n/num > 0
-      return str + "#{name}" if n%num == 0
-      return str + "#{name} " + number_to_english(n%num)
+
+      return "#{name}" if n%num == 0
+      return "#{name} " + number_to_english(n%num)
+
     elsif n/num > 0
-      return str + number_to_english(n/num) + " #{name} " + number_to_english(n%num)
+      return number_to_english(n/num) + " #{name} " + number_to_english(n%num)
+
     end
+
   end
 end
+
 
 
 
@@ -63,4 +78,5 @@ puts number_to_english(27) == "twenty seven"
 puts number_to_english(102) == "one hundred two"
 puts number_to_english(38_079) == "thirty eight thousand seventy nine"
 puts number_to_english(82102713) == "eighty two million one hundred two thousand seven hundred thirteen"
-puts number_to_english(100000) == " one hundred thousand"
+puts number_to_english(6000)
+puts number_to_english(0)
