@@ -17,5 +17,19 @@ The directions given to the man are, for example, the following:
 =end
 
 def dirReduc(arr)
-  ... your code ...
+  #... your code ...
 end
+
+counts = Hash.new(0)
+
+directions = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
+
+
+directions.each_with_object(Hash.new(0)) {|direction,count| counts[direction] += 1}
+
+puts counts
+list_final = []
+counts["NORTH"] > counts["SOUTH"] ? list_final << ["NORTH"] : (counts["SOUTH"] > counts["NORTH"] ? list_final << ["SOUTH"] : list_final)
+counts["WETS"] > counts["EAST"] ? list_final << ["WEST"] : (counts["EAST"] > counts["WEST"] ? list_final << ["EAST"] : list_final)
+
+puts list_final
