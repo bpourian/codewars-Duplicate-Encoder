@@ -35,7 +35,6 @@ def dirReduc(arr)
   arr
 end
 
-
 #one of the tests from codewars
 a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
 
