@@ -39,6 +39,7 @@ removNb(26) should return  **an array of pairs {{15, 21}{21, 15}}**
 tested by way of strings.
 =end
 
+=begin
 
 def removNb(n)
   number_list = []
@@ -51,5 +52,37 @@ def removNb(n)
   end
   number_list
 end
+=end
+#-------------------------
+# the above code although passes the tests...it fails the time test
+#below is a code that me and @Tagrand did whilst paring remotely
+#this passes the codewars time test too
 
-print removNb(10)
+def removNb(n)
+  number_list = []
+  sum = (1..n).inject(0, &:+)
+
+  low_limit = sum / n
+
+  mid_point = Math.sqrt(sum).to_i
+
+   a = mid_point
+   b = mid_point
+
+    until (a == low_limit || b > n)
+      total = sum - (a + b)
+      product = a * b
+       if total == product
+         number_list << [a, b]
+         a -= 1
+      elsif total < product
+         a -= 1
+      else
+         b += 1
+      end
+    end
+
+  other_answers = number_list.map{|arr| arr.reverse}
+  answer = number_list + other_answers
+  answer.sort!
+end
