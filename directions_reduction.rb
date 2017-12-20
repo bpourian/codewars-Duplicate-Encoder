@@ -16,15 +16,27 @@ The directions given to the man are, for example, the following:
 
 =end
 
+#used sorting method similar to a bubbles sort
 def dirReduc(arr)
-
-  sorted_array = Hash.new(0)
-  arr.each_with_object(Hash.new(0)) {|direction,count| sorted_array[direction] += 1}
-
-  good_direction = []
-  sorted_array["NORTH"] > sorted_array["SOUTH"] ? good_direction << "NORTH" : (sorted_array["SOUTH"] > sorted_array["NORTH"] ? good_direction << "SOUTH" : good_direction)
-  sorted_array["WEST"] > sorted_array["EAST"] ? good_direction << "WEST" : (sorted_array["EAST"] > sorted_array["WEST"] ? good_direction << "EAST" : good_direction)
-
+  for num in (0..arr.length - 1)
+    for num in (0..arr.length - 1)
+      #if the two indexes num and num+1 equal to EAST and WEST or vice versa then delete
+      if arr[num] == 'WEST' && arr[num + 1] == 'EAST' || arr[num] == 'EAST' && arr[num + 1] == 'WEST'
+        arr.delete_at(num + 1)
+        arr.delete_at(num)
+      #if the two indexes num and num+1 equal to NORTH and SOUTH or vice versa then delete
+      elsif arr[num] == 'NORTH' && arr[num + 1] == 'SOUTH' || arr[num] == 'SOUTH' && arr[num + 1] == 'NORTH'
+        arr.delete_at(num + 1)
+        arr.delete_at(num)
+      end
+    end
+  end
+  #return array
+  arr
 end
 
-puts dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
+
+#one of the tests from codewars
+a = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
+
+puts dirReduc(a)
