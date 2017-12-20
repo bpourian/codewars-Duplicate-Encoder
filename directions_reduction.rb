@@ -17,19 +17,14 @@ The directions given to the man are, for example, the following:
 =end
 
 def dirReduc(arr)
-  #... your code ...
+
+  sorted_array = Hash.new(0)
+  arr.each_with_object(Hash.new(0)) {|direction,count| sorted_array[direction] += 1}
+
+  good_direction = []
+  sorted_array["NORTH"] > sorted_array["SOUTH"] ? good_direction << "NORTH" : (sorted_array["SOUTH"] > sorted_array["NORTH"] ? good_direction << "SOUTH" : good_direction)
+  sorted_array["WEST"] > sorted_array["EAST"] ? good_direction << "WEST" : (sorted_array["EAST"] > sorted_array["WEST"] ? good_direction << "EAST" : good_direction)
+
 end
 
-counts = Hash.new(0)
-
-directions = ["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"]
-
-
-directions.each_with_object(Hash.new(0)) {|direction,count| counts[direction] += 1}
-
-list_final = []
-
-counts["NORTH"] > counts["SOUTH"] ? list_final << "NORTH" : (counts["SOUTH"] > counts["NORTH"] ? list_final << "SOUTH" : list_final)
-counts["WEST"] > counts["EAST"] ? list_final << "WEST" : (counts["EAST"] > counts["WEST"] ? list_final << "EAST" : list_final)
-
-print list_final
+puts dirReduc(["NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"])
