@@ -41,5 +41,14 @@ tested by way of strings.
 
 
 def removNb(n)
+  number_list = []
+  sum = 0
+  (1..n).each {|num| sum += num}
 
+  (1..n).each do |numA|
+    n.downto(1) do |numB|
+      number_list << [numA, numB] if sum - (numA + numB) == numA * numB
+    end
+  end
+  number_list
 end
