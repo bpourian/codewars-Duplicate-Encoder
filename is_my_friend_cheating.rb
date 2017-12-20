@@ -42,8 +42,7 @@ tested by way of strings.
 
 def removNb(n)
   number_list = []
-  sum = 0
-  (1..n).each {|num| sum += num}
+  sum = (1..n).inject(0, &:+)
 
   (1..n).each do |numA|
     n.downto(1) do |numB|
@@ -52,3 +51,5 @@ def removNb(n)
   end
   number_list
 end
+
+print removNb(10)
