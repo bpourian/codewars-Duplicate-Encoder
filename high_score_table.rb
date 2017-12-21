@@ -39,13 +39,9 @@ class HighScoreTable
   end
 
   def update(score)
-    if @score_list.length < @size
-      @score_list << score
-    else
-      length_array = @score_list.length - 1
-      @score_list = @score_list.sort.reverse
-      @score_list[length_array] = score if @score_list[length_array] < score
-    end
+    return @score_list << score if @score_list.length < @size
+    @score_list = @score_list.sort.reverse
+    @score_list[@size - 1] = score if @score_list[@size - 1] < score
   end
 
 
