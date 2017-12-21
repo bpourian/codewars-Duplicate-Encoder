@@ -41,6 +41,18 @@ If a or b are empty the result is evident by itself.
 
 =end
 
+a = [121, 144, 19, 161, 19, 144, 19, 11]
+b = [121, 14641, 20736, 361, 25921, 361, 20736, 361]
+
 def comp(array1, array2)
-  
+  x = true
+  array1.sort.zip(array2.sort).each do |arr1,arr2|
+     if Math.sqrt(arr2) != arr1
+       return false
+       break
+     end
+  end
+  true
 end
+
+comp(a,b)
