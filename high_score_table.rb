@@ -37,10 +37,14 @@ class HighScoreTable
   end
 
   def update(score)
-    @score = score
-    @score_list.each do |points|
-      
+    @score_list = @score_list.sort.reverse
+    last_item = @score_list[score_list.length - 1]
+    last_item = score if last_item < score
 
+    @score_list.sort.reverse
+      if score >
+
+      end
 
     end
 
