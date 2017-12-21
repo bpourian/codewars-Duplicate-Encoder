@@ -25,13 +25,32 @@ highScoreTable.scores == []
 # And so on...
 =end
 
+
 class HighScoreTable
 
+  def initialize(size)
+    @score_list = Array.new(size)
+  end
+
+  def scores
+    @score_list
+  end
+
+  def update(score)
+    @score = score
+    @score_list.each do |points|
+      
 
 
+    end
 
+  end
 
+  def reset
 
-
+  end
 
 end
+
+highScoreTable = HighScoreTable.new(3)
+print highScoreTable.scores
