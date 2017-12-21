@@ -29,22 +29,34 @@ highScoreTable.scores == []
 class HighScoreTable
 
   def initialize(size)
-    @score_list = Array.new(size)
+    #@score_list = []#Array.new(size)
+    @size = size
   end
 
   def scores
-    @score_list
+    @score_list = []
   end
 
   def update(score)
-    last_item = @score_list[score_list.length - 1]
-    if !score_list.empty?
+  length_array = @score_list.length - 1
+
+    if @score_list.any? {|arr| arr.nil?} == true
+
+        for num in (0..@size)
+
+          if @score_list[num] == nil
+            @score_list[num] = score
+            @score_list = @score_list.sort.reverse
+            break
+          end
+        end
+
+      else
       @score_list = @score_list.sort.reverse
-      last_item = score if last_item < score
-    else
-      @score_list << score
-    end
+        @score_list[length_array] = score if @score_list[length_array] < score
+      end
   end
+
 
   def reset
 
@@ -53,4 +65,8 @@ class HighScoreTable
 end
 
 highScoreTable = HighScoreTable.new(3)
+#highScoreTable.update(10)
+#highScoreTable.update(12)
+#highScoreTable.update(15)
+#highScoreTable.update(11)
 print highScoreTable.scores
