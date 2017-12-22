@@ -38,8 +38,14 @@ If a or b are nil (or null or None), the problem doesn't make sense so return fa
 
 If a or b are empty the result is evident by itself.
 
+## alternative solution voted best on codewars
+
+def comp(array1, array2)
+  array1.nil? || array2.nil? ? false : array1.sort.map {|v| v ** 2} == array2.sort
+end
 
 =end
+#my solution
 
 def comp(array1, array2)
   return false if array1 == nil || array2 == nil
