@@ -39,43 +39,39 @@ In the result codes and their values are in the same order as in M.
 =end
 
 def stockList(listOfArt, listOfCat)
-
+  finalString = ""
+  return finalString if listOfArt.empty? || listOfCat.empty?
   result_hash = Hash.new(0)
 
   splitListOfArt = listOfArt.collect {|d| d.split}
 
-  listOfCat.each do |h|
+  listOfCat.each do |cat|
+    splitListOfArt.each do |book,sum|
 
-    newList.each do |d,g|
-
-
-
-    if d.chars.first == h && t[h.to_sym] == 0
-
-        t[h.to_sym] = g.to_i
-
-      elsif d.chars.first == h && t[h.to_sym] != 0
-        t[h.to_sym] += g.to_i
-
-      elsif t[h.to_sym] == 0
-         t[h.to_sym] = 0.to_i
+      if book.chars.first == cat && result_hash[cat.to_sym] == 0
+          result_hash[cat.to_sym] = sum.to_i
+        elsif book.chars.first == cat && result_hash[cat.to_sym] != 0
+          result_hash[cat.to_sym] += sum.to_i
+        elsif result_hash[cat.to_sym] == 0
+           result_hash[cat.to_sym] = 0.to_i
       end
-
     end
-    #t[d] = [g.to_i]
-
   end
 
+  x = 0
+  result_hash.each do |key,value|
+    x += 1
+    finalString.concat("(#{key} : #{value})")
+    finalString.concat(" - ") if result_hash.length > x
+    #(A : 20) -
+  end
+  finalString
 end
 
 L = ["ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"]
 M = ["A", "B", "C", "W"]
 
-#newHash = Hash[*newList.flatten]
+#L = []
+#M = []
 
-
-
-
-#t.each {|d,c| puts c}
-
-puts t
+puts stockList(L,M)
