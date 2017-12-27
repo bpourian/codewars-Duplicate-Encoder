@@ -1,8 +1,4 @@
 =begin
-
-rescue ExceptionName
-
-end
 A bookseller has lots of books classified in 26 categories labeled A, B, ... Z.
 Each book has a code c of 3, 4, 5 or more capitals letters. The 1st letter of a
 code is the capital letter of the book category. In the bookseller's stocklist
@@ -43,5 +39,43 @@ In the result codes and their values are in the same order as in M.
 =end
 
 def stockList(listOfArt, listOfCat)
-  
+
+  result_hash = Hash.new(0)
+
+  splitListOfArt = listOfArt.collect {|d| d.split}
+
+  listOfCat.each do |h|
+
+    newList.each do |d,g|
+
+
+
+    if d.chars.first == h && t[h.to_sym] == 0
+
+        t[h.to_sym] = g.to_i
+
+      elsif d.chars.first == h && t[h.to_sym] != 0
+        t[h.to_sym] += g.to_i
+
+      elsif t[h.to_sym] == 0
+         t[h.to_sym] = 0.to_i
+      end
+
+    end
+    #t[d] = [g.to_i]
+
+  end
+
 end
+
+L = ["ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"]
+M = ["A", "B", "C", "W"]
+
+#newHash = Hash[*newList.flatten]
+
+
+
+
+#t.each {|d,c| puts c}
+
+puts t
