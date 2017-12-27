@@ -18,12 +18,9 @@ containing valid characters (A-Z, a-z, or 0-9).
 =end
 
 def scramble(str, arr)
-
-  str = str.split("")
   list_new = Hash.new()
-  str.zip(arr).each  {|letter,index|list_new[index] = [letter]}
+  str.split("").zip(arr).each {|letter,index|list_new[index] = [letter]}
   list_new.sort.map {|num,lett| lett}.join()
-
 end
 
-scramble('abcd', [0,3,1,2])
+puts scramble('abcd', [0,3,1,2])
