@@ -24,5 +24,8 @@ The middle character(s) of the word represented as a string.
 =end
 
 def get_middle(s)
-  #your code here
+  return s = (s[s.length/2-1]+s[(s.length/2)]) if s.length.even?
+  s[s.length/2]
 end
+
+get_middle("testings")
