@@ -36,18 +36,33 @@ Note:
 
 In the result codes and their values are in the same order as in M.
 
+#### Alternative solution from codewars###
+
+def stockList(stock_list, categories)
+  return "" if stock_list.empty? || categories.empty?
+
+  quantities = Hash.new(0)
+  stock_list.each_with_object(quantities) do |item, quantities|
+    code, quantity = item.split(" ")
+    quantities[code[0]] += quantity.to_i
+  end
+
+  categories.map { |category| "(#{category} : #{quantities[category]})" }.join(" - ")
+end
+
 =end
 
-def stockList(listOfArt, listOfCat)
-  finalString = ""
-  return finalString if listOfArt.empty? || listOfCat.empty?
-  result_hash = Hash.new(0)
 
+
+def stockList(listOfArt, listOfCat)
+  return "" if listOfArt.empty? || listOfCat.empty?
+
+  result_hash = Hash.new(0)
   splitListOfArt = listOfArt.collect {|d| d.split}
 
   listOfCat.each do |cat|
-    splitListOfArt.each do |book,sum|
 
+    splitListOfArt.each do |book,sum|
       if book.chars.first == cat && result_hash[cat.to_sym] == 0
           result_hash[cat.to_sym] = sum.to_i
         elsif book.chars.first == cat && result_hash[cat.to_sym] != 0
@@ -56,16 +71,9 @@ def stockList(listOfArt, listOfCat)
            result_hash[cat.to_sym] = 0.to_i
       end
     end
-  end
 
-  x = 0
-  result_hash.each do |key,value|
-    x += 1
-    finalString.concat("(#{key} : #{value})")
-    finalString.concat(" - ") if result_hash.length > x
-    #(A : 20) -
   end
-  finalString
+  listOfCat.map { |category| "(#{category} : #{result_hash[category.to_sym]})" }.join(" - ")
 end
 
 L = ["ABART 20", "CDXEF 50", "BKWRK 25", "BTSQZ 89", "DRTYM 60"]
