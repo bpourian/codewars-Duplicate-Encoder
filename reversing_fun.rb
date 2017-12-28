@@ -19,5 +19,20 @@ you would return:504132
 =end
 
 def reverse_fun(n)
-    # your code
+final_result = []
+  for num in (0..n.length-1)
+    n = n.reverse
+    final_result.push(n.slice(0))
+    n = n[1..-1]
+
+  end
+
+
+final_result.join()
+
 end
+
+
+stry = '012345'
+
+reverse_fun(stry)
