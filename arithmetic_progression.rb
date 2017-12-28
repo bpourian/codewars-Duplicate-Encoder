@@ -13,5 +13,7 @@ More info: https://en.wikipedia.org/wiki/Arithmetic_progression
 =end
 
 def arithmetic_sequence_elements(a,r,n)
-  #your code here
+  (1..n).collect {|num| (num-1)*r + a}.join(", ")
 end
+
+arithmetic_sequence_elements(1,2,5)
