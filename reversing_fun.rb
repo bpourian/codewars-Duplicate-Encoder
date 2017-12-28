@@ -24,15 +24,11 @@ final_result = []
     n = n.reverse
     final_result.push(n.slice(0))
     n = n[1..-1]
-
   end
-
-
 final_result.join()
-
 end
 
 
-stry = '012345'
+stry = '0123456789'
 
-reverse_fun(stry)
+puts reverse_fun(stry)
